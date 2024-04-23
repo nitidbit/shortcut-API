@@ -414,10 +414,10 @@ def validate_config(cfg):
             problems.append(
                 f' - Your config.json is missing an expected field "priorities_csv_file" whose default value is {data_priorities_csv}. Add it manually or run `make clean import` to regenerate a valid config.json'
             )
-        if "priority_custom_field_id" not in cfg or not cfg["priority_custom_field_id"]:
-            problems.append(
-                f' - Your config.json file needs a "priority_custom_field_id" entry whose value is the ID of the built-in Shortcut Custom Field called "Priority" which you can find in {shortcut_custom_fields_csv}'
-            )
+        # if "priority_custom_field_id" not in cfg or not cfg["priority_custom_field_id"]:
+        #     problems.append(
+        #         f' - Your config.json file needs a "priority_custom_field_id" entry whose value is the ID of the built-in Shortcut Custom Field called "Priority" which you can find in {shortcut_custom_fields_csv}'
+        #     )
         if "pt_csv_file" not in cfg or not cfg["pt_csv_file"]:
             problems.append(
                 f' - Your config.json file needs a "pt_csv_file" entry whose default value is {data_pivotal_export_csv}. Add it manually or run `make clean import` to regenerate a valid config.json'

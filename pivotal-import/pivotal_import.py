@@ -299,14 +299,14 @@ def build_entity(ctx, d):
         # Custom Fields
         custom_fields = []
         # process priority as Priority custom field
-        pt_priority = d.get("priority")
-        if pt_priority:
-            custom_fields.append(
-                {
-                    "field_id": ctx["priority_custom_field_id"],
-                    "value_id": ctx["priority_config"][pt_priority],
-                }
-            )
+        # pt_priority = d.get("priority")
+        # if pt_priority:
+        #     custom_fields.append(
+        #         {
+        #             "field_id": ctx["priority_custom_field_id"],
+        #             "value_id": ctx["priority_config"][pt_priority],
+        #         }
+        #     )
 
         if custom_fields:
             d["custom_fields"] = custom_fields
@@ -342,9 +342,9 @@ def load_mapping_csv(csv_file, from_key, to_key, to_transform=identity):
     return d
 
 
-def load_priorities(csv_file):
-    logger.debug(f"Loading priorities from {csv_file}")
-    return load_mapping_csv(csv_file, "pt_priority", "shortcut_custom_field_value_id")
+# def load_priorities(csv_file):
+#     logger.debug(f"Loading priorities from {csv_file}")
+#     return load_mapping_csv(csv_file, "pt_priority", "shortcut_custom_field_value_id")
 
 
 def load_users(csv_file):
@@ -520,8 +520,8 @@ def write_created_entities_csv(created_entities):
 def build_ctx(cfg):
     ctx = {
         "group_id": cfg["group_id"],
-        "priority_config": load_priorities(cfg["priorities_csv_file"]),
-        "priority_custom_field_id": cfg["priority_custom_field_id"],
+        # "priority_config": load_priorities(cfg["priorities_csv_file"]),
+        # "priority_custom_field_id": cfg["priority_custom_field_id"],
         "user_config": load_users(cfg["users_csv_file"]),
         "workflow_config": load_workflow_states(cfg["states_csv_file"]),
     }
